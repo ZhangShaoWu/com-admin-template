@@ -1,0 +1,99 @@
+.el-header{
+    background-color: #fff;
+    text-align: center;
+    line-height: 50px;
+    height: 50px !important;
+}
+
+.el-aside {
+    background: #fff;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+    width: 180px !important;
+}
+.el-container{
+    height: 100%;
+}
+.el-main{
+    box-shadow: inset 2px 2px #efefef;
+}
+.logo{
+    height: 50px;
+    border: 1px dashed #efefef ;
+    color: #6c6c6c;
+    z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0 24px;
+    box-shadow: 0 1px 9px -3px rgba(0,0,0,.2);
+}
+.user-info{
+    float: right;
+    height: 50px;
+    line-height: 50px;
+}
+.user-info span{
+    display: inline-block;
+    margin: 0 10px;
+    line-height: 50px;
+}
+.user-info .username{
+    cursor: pointer;
+}
+.user-info .head-img{
+    width: 30px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    font-size: 13px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: "tnum";
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    background: #ccc;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: All 0.4s ease-in-out;
+    -webkit-transition: All 0.4s ease-in-out;
+    -moz-transition: All 0.4s ease-in-out;
+    -o-transition: All 0.4s ease-in-out;
+}
+.user-info .head-img:hover{
+    transform: scale(1.4);
+    transform: rotate(360deg) scale(1.5);
+    -webkit-transform: rotate(360deg) scale(1.2);
+    -moz-transform: rotate(360deg) scale(1.2);
+    -o-transform: rotate(360deg) scale(1.2);
+    -ms-transform: rotate(360deg) scale(1.2);
+}
+.user-info .head-img img{
+    border-radius: 50%;
+    width: 100%;
+}
+#Loading{
+    background:url("../image/loading.gif") 50% no-repeat #fff;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    /*position:fixed;*/
+    /*left:0;*/
+    /*top:0;*/
+    z-index:100;
+    display: none;
+}

@@ -1,0 +1,36 @@
+[v-cloak]{
+    display:none;
+}
+
+html,body{
+    font-family: Microsoft Yahei;
+    height: 100%;
+    margin: 0;
+    background: #f8f8f8;
+    font-size: 14px
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#app{
+    height: 100%;
+}
+iframe{
+    height: 98%;
+    width: 100%;
+    border: none;
+
+}
+#page{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: #fff;
+}
+

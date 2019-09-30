@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:include="common::header"></div>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <el-container>
+            <el-aside>
+                <div class="logo">logo</div>
+                <el-menu class="el-menu-vertical-demo"
+                         @open="handleOpen"
+                         @close="handleClose"
+                         :collapse="isCollapse"
+                         unique-opened="true"
+                >
+                    <el-submenu v-for="menu of menus" :index="menu.id">
+                        <template slot="title">
+                            <i class="el-icon-location"></i>
+                            <span slot="title">{{menu.name}}</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item :index="menu.id-i" v-for="(c,i) in menu.children" @click="skip" :url="c.url" :name="c.name">{{c.name}}</el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                </el-menu>
+            </el-aside>
+            <el-container>
+                <el-header>
+                    <div class="user-info">
+                        <span class="notice"><i class="el-icon-bell"></i></span>
+                        <span class="username">
+                        <el-dropdown>
+                            <span class="el-dropdown-link">
+                                你好,{{userInfo.name}}<i class="el-icon-arrow-down el-icon--right"></i>
+                            </span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item>个人中心</el-dropdown-item>
+                                <el-dropdown-item>重置密码</el-dropdown-item>
+                                <el-dropdown-item divided>退出登录</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                        </span>
+                        <span class="head-img">
+                            <!--<img src="america.svg"/>-->
+                        </span>
+                    </div></el-header>
+                <el-main>
+                    <!--Loading-->
+                    <section id="Loading"></section>
+                    <!--Loading-->
+                    <!--<el-breadcrumb separator="/">-->
+                        <!--<el-breadcrumb-item :to="{ path: 'crumb.url' }">{{crumb.name}}</el-breadcrumb-item>-->
+                    <!--</el-breadcrumb>-->
+                    <div id="page">
+                        <iframe id="iframe"></iframe>
+                    </div>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
+</body>
+<div th:include="common::footer"></div>
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+</html>

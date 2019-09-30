@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.admin.template.model.dao.MovieDao" >
+    <select id="query" resultType="com.admin.template.model.entity.MovieEntity">
+        select
+            <include refid="BaseColumnList"/>
+        from `movie` m
+        WHERE 1 = 1
+        <if test="list != null and list.size() > 0">
+            <foreach collection="list" item="i">
+            ${i}
+        </foreach>
+        </if>
+    </select>
+
+    <sql id="BaseColumnList" >
+        m.`id`,
+        m.`create_time`,
+        m.`modify_time`,
+        m.`version`,
+        m.`image`,
+        m.`name`
+    </sql>
+
+    <select id="page" resultType="com.admin.template.model.entity.MovieEntity" flushCache="true">
+        select
+            <include refid="BaseColumnList"/>
+        from `movie` m
+    </select>
+
+    <insert id="save" parameterType="com.admin.template.model.entity.MovieEntity" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO `movie`
+            (
+            `version`,
+            `image`,
+            `name`
+            )
+        VALUES
+            (
+            #{version},
+            #{image},
+            #{name}
+            );
+    </insert>
+
+    <insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO `movie`
+            (
+            `version`,
+            `image`,
+            `name`
+            )
+        VALUES
+        <foreach collection ="list" item="i" index= "index" separator =",">
+            (
+            #{i.version},
+            #{i.image},
+            #{i.name}
+            )
+            </foreach>
+    </insert>
+
+
+    <delete id="removeById">
+        delete
+        from
+            `movie`
+        where
+            id = #{id}
+    </delete>
+
+    <delete id="batchRemovedByIds">
+        delete
+        from
+            `movie`
+        where
+        id in
+        (
+          <foreach collection="list" item="id" separator=",">
+            #{id}
+          </foreach>
+        )
+    </delete>
+
+     <update id="update">
+        update
+          `movie`
+        <set>
+        <if test="version != null and version != ''">
+            `version` = #{version},
+        </if>
+        <if test="image != null and image != ''">
+            `image` = #{image},
+        </if>
+        <if test="name != null and name != ''">
+            `name` = #{name}        </if>
+        </set>
+        where
+            id = #{id}
+        </update>
+
+</mapper>
